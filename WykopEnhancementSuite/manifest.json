@@ -1,9 +1,9 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
 
     "name": "Wykop Enhancement Suite",
     "description": "Dodatek to portalu wykop, rozszerzający działanie czarnolisty. Oraz oferujący kilka ciekawych funkcji.",
-    "version": "0.2",
+    "version": "0.2.1",
     "short_name":"WES",
     "icons": {
         "128": "img/icon.png"
