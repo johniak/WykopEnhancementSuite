@@ -7,7 +7,7 @@ class SettingManager {
     public permDlaCalki:boolean;
     public greenRaja:boolean;
     public bordoKicioch:boolean;
-
+    public blacklistedWords:String[];
 
     constructor() {
 
@@ -20,7 +20,8 @@ class SettingManager {
             coloredPlus: true,
             permDlaCalki: false,
             greenRaja: false,
-            bordoKicioch: false
+            bordoKicioch: false,
+            blacklistedWords:[]
         }, (items:any) => {
             this.hiddenUsers = items["hiddenUsers"];
             this.hideAds = items["hideAds"];
@@ -28,6 +29,7 @@ class SettingManager {
             this.permDlaCalki = items["permDlaCalki"];
             this.greenRaja = items["greenRaja"];
             this.bordoKicioch = items["bordoKicioch"];
+            this.blacklistedWords=items["blacklistedWords"]
             console.log(items);
             complete();
         });
@@ -41,7 +43,8 @@ class SettingManager {
             coloredPlus: this.coloredPlus,
             permDlaCalki: this.permDlaCalki,
             greenRaja: this.greenRaja,
-            bordoKicioch: this.bordoKicioch
+            bordoKicioch: this.bordoKicioch,
+            blacklistedWords: this.blacklistedWords
         }, () => {
             console.log("saved");
         });

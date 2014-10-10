@@ -1,9 +1,11 @@
 ﻿/// <reference path="../dts/jquery.d.ts" />
 /// <reference path="../dts/chrome.d.ts" />
 /// <reference path="SettingManager.ts" />
-
+/// <reference path="../dts/jquery.d.ts"/>
+/// <reference path="../dts/select2.d.ts"/>
 
 var settingManager;
+
 
 window.onload = () => {
     settingManager = new SettingManager();
@@ -31,6 +33,11 @@ window.onload = () => {
         settingManager.bordoKicioch = <any>$("#bordo-kicioch").is(':checked');
         settingManager.save();
     });
+    $("#blacklist-words").change(()=> {
+        var words=$("#blacklist-words").val().split(',');
+        settingManager.blacklistedWords=words;
+        settingManager.save();
+    });
     settingManager.read(() => {
         console.log(settingManager.hiddenUsers);
         console.log(settingManager.permDlaCalki);
@@ -42,6 +49,10 @@ window.onload = () => {
         $("#ban-calka").attr('checked', settingManager.permDlaCalki);
         $("#green-raja").attr('checked', settingManager.greenRaja);
         $("#bordo-kicioch").attr('checked', settingManager.bordoKicioch);
+        $("#blacklist-words").val(settingManager.blacklistedWords.join());
+        $("#blacklist-words").select2({
+            tags: [],
+            tokenSeparators: [","]});
     });
 
 };

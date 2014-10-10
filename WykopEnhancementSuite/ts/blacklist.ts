@@ -63,6 +63,25 @@ class BlacklistManager {
         if (this.settings.hiddenUsers) {
             this.hideUserActivity();
         }
+        if(this.settings.blacklistedWords.length>0) {
+            this.hidePostsWithBlackListedWords();
+        }
+    }
+    public hidePostsWithBlackListedWords() {
+        var words = this.settings.blacklistedWords;
+        var blacklisted = $(".entry.iC>>>.text").contents().filter(function () {
+            var text =$(this).text();
+            for (var i in words){
+                var word=words[i];
+                if(word.length==0)
+                    return false;
+                return text.indexOf(word)>-1;
+            }
+            //return $.inArray(, words) != -1;
+        });
+        $.each(blacklisted, (index, post) => {
+            $(post).parent().parent().parent().parent().css("display", "none");
+        });
     }
 
     public hideUserActivity() {
@@ -120,6 +139,7 @@ class Settings {
     public permDlaCalki:boolean;
     public bordoKicioch:boolean;
     public path:string;
+    public blacklistedWords:string[];
 }
 
 

@@ -26,6 +26,9 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
             case 'bordoKicioch':
                 settingManager.bordoKicioch = value;
                 break;
+            case 'blacklistedWords':
+                settingManager.blacklistedWords = value;
+                break;
         }
     }
 });
@@ -41,6 +44,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             permDlaCalki: settingManager.permDlaCalki,
             greenRaja: settingManager.greenRaja,
             bordoKicioch: settingManager.bordoKicioch,
+            blacklistedWords:settingManager.blacklistedWords,
             path: chrome.extension.getURL('')
         };
         console.log(response);
@@ -48,10 +52,5 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }  // snub them.
 });
 
-chrome.webNavigation.onCommitted.addListener(function(details)
-{
-    console.log(details);
-//    var responseData = "<div>Some text</div>"
-//    return {redirectUrl: "data:text/html," + encodeURIComponent(responseData)};
-});
+
 
