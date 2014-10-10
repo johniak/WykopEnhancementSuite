@@ -1,8 +1,8 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
 
     "name": "Wykop Enhancement Suite",
-    "description": "Dodatek to portalu wykop, rozszerzający działanie czarnolisty.",
+    "description": "Dodatek to portalu wykop, rozszerzający działanie czarnolisty. Oraz oferujący kilka ciekawych funkcji.",
     "version": "0.2",
     "short_name":"WES",
     "icons": {
@@ -28,7 +28,7 @@
         "ts/blacklist.js.map",
         "css/chrome_shared.css",
         "css/widgets.css",
-        "css/colored_nicks"
+        "css/colored_nicks.css"
     ],
     "options_page": "options.html",
     "background": {

@@ -27,7 +27,9 @@ class BlacklistManager {
 
 
     private initialize():void {
-
+        if(this.settings.coloredPlus) {
+            $('head').append('<link rel="stylesheet" href="' + this.settings.path + 'css/colored_nicks.css" type="text/css" />');
+        }
         $.get("http://www.wykop.pl/ustawienia/czarne-listy/", (data) => {
             var jqueryData = $(data);
             var htmlUsers = jqueryData.find(".usercard a span b");
@@ -113,9 +115,11 @@ class BlacklistManager {
 class Settings {
     public hiddenUsers:boolean;
     public hideAds:boolean;
+    public coloredPlus:boolean;
     public greenRaja:boolean;
     public permDlaCalki:boolean;
     public bordoKicioch:boolean;
+    public path:string;
 }
 
 

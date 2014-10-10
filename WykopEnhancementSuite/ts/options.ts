@@ -15,6 +15,10 @@ window.onload = () => {
         settingManager.hideAds = <any>$("#hide-ads").is(':checked');
         settingManager.save();
     });
+    $("#colored-plus").change(() => {
+        settingManager.coloredPlus = <any>$("#colored-plus").is(':checked');
+        settingManager.save();
+    });
     $("#ban-calka").change(() => {
         settingManager.permDlaCalki = <any>$("#ban-calka").is(':checked');
         settingManager.save();
@@ -34,6 +38,7 @@ window.onload = () => {
         console.log(settingManager.bordoKicioch);
         $("#hide-users").attr('checked', settingManager.hiddenUsers);
         $("#hide-ads").attr('checked', settingManager.hideAds);
+        $("#colored-plus").attr('checked', settingManager.coloredPlus);
         $("#ban-calka").attr('checked', settingManager.permDlaCalki);
         $("#green-raja").attr('checked', settingManager.greenRaja);
         $("#bordo-kicioch").attr('checked', settingManager.bordoKicioch);

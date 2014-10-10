@@ -14,6 +14,9 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
             case 'hideAds':
                 settingManager.hideAds = value;
                 break;
+            case 'coloredPlus':
+                settingManager.coloredPlus = value;
+                break;
             case 'permDlaCalki':
                 settingManager.permDlaCalki = value;
                 break;
@@ -34,9 +37,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         var response = {
             hiddenUsers: settingManager.hiddenUsers,
             hideAds: settingManager.hideAds,
+            coloredPlus: settingManager.coloredPlus,
             permDlaCalki: settingManager.permDlaCalki,
             greenRaja: settingManager.greenRaja,
-            bordoKicioch: settingManager.bordoKicioch
+            bordoKicioch: settingManager.bordoKicioch,
+            path: chrome.extension.getURL('')
         };
         console.log(response);
         sendResponse(response);
