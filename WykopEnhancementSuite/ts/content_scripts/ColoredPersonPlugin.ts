@@ -1,8 +1,6 @@
 /**
  * Created by johniak on 10/11/14.
  */
-/// <reference path="../Settings.ts" />
-/// <reference path="../../dts/jquery.d.ts" />
 /// <reference path="../../dts/chrome.d.ts" />
 /// <reference path="../Settings.ts" />
 /// <reference path="BasePlugin.ts" />
@@ -34,6 +32,15 @@ class ColoredPersonPlugin extends BasePlugin {
             });
             if (window.location.pathname == "/ludzie/"+personName+"/") {
                 $('h2>span').attr("class", this.colorClass);
+            }
+            var pmUrlRegexp = new RegExp('^/wiadomosc-prywatna/')
+            if(pmUrlRegexp.test(window.location.pathname)) {
+                $(".usercard>a>span>b").filter(function () {
+                    return $(this).text() == personName;
+                }).closest('span').attr('class', colorClass);
+                $('h4>a[class*="color"]').filter(function(){
+                    return $(this).text() == personName;
+                }).attr('class', colorClass);
             }
         }
     }
