@@ -1,8 +1,9 @@
 ﻿/**
  * Created by johniak on 10/4/2014.
  */
-/// <reference path="../dts/jquery.d.ts" />
-/// <reference path="../dts/chrome.d.ts" />
+/// <reference path="../../dts/jquery.d.ts" />
+/// <reference path="../../dts/chrome.d.ts" />
+/// <reference path="../Settings.ts" />
 var domExist = null;
 console.log("kopytko");
 var interval = window.setInterval(()=> {
@@ -131,16 +132,7 @@ class BlacklistManager {
     }
 }
 
-class Settings {
-    public hiddenUsers:boolean;
-    public hideAds:boolean;
-    public coloredPlus:boolean;
-    public greenRaja:boolean;
-    public permDlaCalki:boolean;
-    public bordoKicioch:boolean;
-    public path:string;
-    public blacklistedWords:string[];
-}
+
 
 
 chrome.runtime.sendMessage({ method: "getSettings" }, function (response) {

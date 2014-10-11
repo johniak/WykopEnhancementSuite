@@ -18,7 +18,7 @@
         {
             "matches": [ "https://www.wykop.pl/*", "http://www.wykop.pl/*" ],
             "run_at": "document_start",
-            "js": [ "js/jquery-1.10.1.min.js", "ts/blacklist.js" ]
+            "js": [ "js/jquery-1.10.1.min.js", "ts/Settings.js" , "ts/content_scripts/blacklist.js" ]
         }
     ],
     "browser_action": {
@@ -28,10 +28,11 @@
         "ts/blacklist.js.map",
         "css/chrome_shared.css",
         "css/widgets.css",
-        "css/colored_nicks.css"
+        "css/colored_nicks.css",
+        "ts/Settings.js"
     ],
     "options_page": "options.html",
     "background": {
-        "scripts": [ "ts/SettingManager.js", "ts/background.js" ]
+        "scripts": ["ts/Settings.js", "ts/SettingManager.js", "ts/background.js" ]
     }
 }
