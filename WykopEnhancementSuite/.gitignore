@@ -1,5 +1,3 @@
-*.js
-*.js.map
 bin/*
 obj/*
 .idea/*
