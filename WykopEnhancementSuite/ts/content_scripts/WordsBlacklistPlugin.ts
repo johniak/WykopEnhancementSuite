@@ -18,8 +18,8 @@ class WordsBlacklistPlugin extends BasePlugin {
             ];
     }
 
-    public runAction(runningPoint:RunningPoint):void{
-        if(this.settings.blacklistedWords.length>0) {
+    public runAction(runningPoint:RunningPoint):void {
+        if (this.settings.blacklistedWords.length > 0) {
             this.hidePostsWithBlackListedWords();
         }
     }
@@ -27,10 +27,11 @@ class WordsBlacklistPlugin extends BasePlugin {
     private hidePostsWithBlackListedWords() {
         var words = this.settings.blacklistedWords;
         var blacklisted = $(".entry.iC>>>.text").contents().filter(function () {
-            var text =$(this).text();
-            for (var i in words){
-                var word=words[i];
-                return text.indexOf(word)>-1;
+            var text = $(this).text();
+            for (var i in words) {
+                var word = words[i];
+                if (text.indexOf(word) > -1)
+                    return true;
             }
             //return $.inArray(, words) != -1;
         });
