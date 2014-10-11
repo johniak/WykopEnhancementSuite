@@ -18,14 +18,34 @@
         {
             "matches": [ "https://www.wykop.pl/*", "http://www.wykop.pl/*" ],
             "run_at": "document_start",
-            "js": [ "js/jquery-1.10.1.min.js", "ts/Settings.js" , "ts/content_scripts/blacklist.js" ]
+            "js": [
+                "js/jquery-1.10.1.min.js",
+                "ts/Settings.js",
+                "ts/content_scripts/BasePlugin.js",
+                "ts/content_scripts/AdsBlockPlugin.js",
+                "ts/content_scripts/BlacklistPersonPlugin.js",
+                "ts/content_scripts/WordsBlacklistPlugin.js",
+                "ts/content_scripts/ColoredPlusPlugin.js",
+                "ts/content_scripts/ColoredPersonPlugin.js",
+                "ts/content_scripts/BannedPersonPlugin.js",
+                "ts/content_scripts/PluginsManager.js",
+                "ts/content_scripts/wykop_enhancement_suite_main.js"]
         }
     ],
     "browser_action": {
         "default_icon": "img/icon.png"
     },
     "web_accessible_resources": [
-        "ts/blacklist.js.map",
+        "ts/Settings.js.map",
+        "ts/content_scripts/BasePlugin.js.map",
+        "ts/content_scripts/AdsBlockPlugin.js.map",
+        "ts/content_scripts/BlacklistPersonPlugin.js.map",
+        "ts/content_scripts/WordsBlacklistPlugin.js.map",
+        "ts/content_scripts/ColoredPlusPlugin.js.map",
+        "ts/content_scripts/ColoredPersonPlugin.js.map",
+        "ts/content_scripts/BannedPersonPlugin.js.map",
+        "ts/content_scripts/PluginsManager.js.map",
+        "ts/content_scripts/wykop_enhancement_suite_main.js.map",
         "css/chrome_shared.css",
         "css/widgets.css",
         "css/colored_nicks.css",
