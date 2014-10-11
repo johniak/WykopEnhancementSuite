@@ -3,7 +3,7 @@
 
     "name": "Wykop Enhancement Suite",
     "description": "Dodatek to portalu wykop, rozszerzający działanie czarnolisty. Oraz oferujący kilka ciekawych funkcji.",
-    "version": "0.2.1",
+    "version": "0.3",
     "short_name":"WES",
     "icons": {
         "128": "img/icon.png"
