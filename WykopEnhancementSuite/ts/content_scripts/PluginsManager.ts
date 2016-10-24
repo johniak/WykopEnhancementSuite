@@ -11,6 +11,7 @@
 /// <reference path="ColoredPersonPlugin.ts" />
 /// <reference path="BannedPersonPlugin.ts" />
 /// <reference path="ColoredPlusPlugin.ts" />
+/// <reference path="NsfwPlugin.ts" />
 
 class PluginsManager{
 
@@ -23,6 +24,7 @@ class PluginsManager{
             new AdsBlockPlugin(settings),
             new ColoredPlusPlugin(settings),
             new WordsBlacklistPlugin(settings),
+            new NsfwPlugin(settings),
             new ColoredPersonPlugin(settings,'Raja','color-0','greenRaja'),
             new ColoredPersonPlugin(settings,'kicioch','color-2','bordoKicioch'),
             new BannedPersonPlugin(settings,'FilozofujacaCalka','permDlaCalki','za zbrodnię na Wołyniu'),
