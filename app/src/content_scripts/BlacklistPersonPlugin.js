@@ -1,8 +1,9 @@
 /**
  * Created by johniak on 10/11/14.
  */
-import BasePlugin from './BasePlugin';
 import $ from 'jquery';
+
+import BasePlugin from './BasePlugin';
 
 export default class BlacklistPersonPlugin extends BasePlugin {
   constructor(settings) {
@@ -28,7 +29,7 @@ export default class BlacklistPersonPlugin extends BasePlugin {
   }
 
   runAction(runningPoint) {
-    if (runningPoint == BasePlugin.RunningPoint.DOM_CREATED) {
+    if (runningPoint === BasePlugin.RunningPoint.DOM_CREATED) {
       this.isDomCreated = true;
     }
     this.hidePersonActivity();
@@ -38,7 +39,7 @@ export default class BlacklistPersonPlugin extends BasePlugin {
     if (this.settings.hiddenUsers) {
       const users = this.users;
       const blacklisted = $('.author.ellipsis a b').contents().filter(function () {
-        return $.inArray($(this).text(), users) != -1;
+        return $.inArray($(this).text(), users) !== -1;
       });
       $.each(blacklisted, (index, author) => {
         const post = $(author).closest('li');

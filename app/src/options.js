@@ -33,8 +33,7 @@ window.onload = () => {
     settingManager.save();
   });
   $('#blacklist-words').change(() => {
-    console.log($('#blacklist-words').val())
-    if ($('#blacklist-words').val().length == 0) {
+    if ($('#blacklist-words').val().length === 0) {
       settingManager.settings.blacklistedWords = [];
       settingManager.save();
       return;
@@ -44,7 +43,6 @@ window.onload = () => {
     settingManager.save();
   });
   settingManager.read(() => {
-    console.log(settingManager.settings);
     $('#hide-users').attr('checked', settingManager.settings.hiddenUsers);
     $('#hide-ads').attr('checked', settingManager.settings.hideAds);
     $('#colored-plus').attr('checked', settingManager.settings.coloredPlus);
@@ -53,7 +51,7 @@ window.onload = () => {
     $('#bordo-kicioch').attr('checked', settingManager.settings.bordoKicioch);
     $('#blacklist-words').select2({
       tags: settingManager.settings.blacklistedWords,
-      tokenSeparators: [',',],
+      tokenSeparators: [','],
     });
     $('#blacklist-words').val(settingManager.settings.blacklistedWords);
     $('#blacklist-words').trigger('change');

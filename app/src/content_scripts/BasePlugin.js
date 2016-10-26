@@ -14,8 +14,8 @@ export default class BasePlugin {
   }
 
   hasRunningPoint(runningPoint) {
-    for (const index in this.runningPoints) {
-      if (this.runningPoints[index] == runningPoint) {
+    for (const allowedPoint of this.runningPoints) {
+      if (allowedPoint === runningPoint) {
         return true;
       }
     }

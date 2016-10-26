@@ -1,8 +1,9 @@
 /**
  * Created by johniak on 10/11/14.
  */
-import BasePlugin from './BasePlugin';
 import $ from 'jquery';
+
+import BasePlugin from './BasePlugin';
 
 export default class WordsBlacklistPlugin extends BasePlugin {
   constructor(settings) {
@@ -23,16 +24,20 @@ export default class WordsBlacklistPlugin extends BasePlugin {
     const words = this.settings.blacklistedWords;
     const blacklisted = $('.entry.iC>>>.text').contents().filter(function () {
       const text = $(this).text();
-      for (const i in words) {
-        const word = words[i];
+      for (const word of words) {
         if (text.indexOf(word) > -1) {
           return true;
         }
       }
-      // return $.inArray(, words) != -1;
+      return false;
     });
     $.each(blacklisted, (index, post) => {
-      $(post).parent().parent().parent().parent().css('display', 'none');
+      $(post)
+        .parent()
+        .parent()
+        .parent()
+        .parent()
+        .css('display', 'none');
     });
   }
 }
