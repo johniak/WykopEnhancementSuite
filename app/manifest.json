@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+
+    "name": "Wykop Enhancement Suite",
+    "description": "Dodatek to portalu wykop, rozszerzający działanie czarnolisty. Oraz oferujący kilka ciekawych funkcji.",
+    "version": "0.4",
+    "short_name":"WES",
+    "icons": {
+        "128": "img/icon.png"
+    },
+
+    "permissions": [
+        "webNavigation",
+        "https://www.wykop.pl/",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": [ "https://www.wykop.pl/*", "http://www.wykop.pl/*" ],
+            "run_at": "document_start",
+            "js": ["content_script.bundle.js"]
+        }
+    ],
+    "browser_action": {
+        "default_icon": "img/icon.png"
+    },
+    "web_accessible_resources": [
+    ],
+    "options_page": "options.html",
+    "background": {
+        "scripts": ["background.bundle.js" ]
+    }
+}
