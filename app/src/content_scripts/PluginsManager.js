@@ -41,8 +41,7 @@ export default class PluginsManager {
     }, 5);
   }
   onDOMCreated() {
-    for (const index in this.plugins) {
-      const plugin = this.plugins[index];
+    for (const plugin of this.plugins) {
       if (plugin.hasRunningPoint(BasePlugin.RunningPoint.DOM_CREATED)) {
         plugin.runAction(BasePlugin.RunningPoint.DOM_CREATED);
       }
@@ -52,8 +51,7 @@ export default class PluginsManager {
     });
   }
   onDOMModified() {
-    for (const index in this.plugins) {
-      const plugin = this.plugins[index];
+    for (const plugin of this.plugins) {
       if (plugin.hasRunningPoint(BasePlugin.RunningPoint.DOM_MODIFIED)) {
         plugin.runAction(BasePlugin.RunningPoint.DOM_MODIFIED);
       }

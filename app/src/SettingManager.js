@@ -12,7 +12,6 @@ export default class SettingManager {
   }
   save() {
     chrome.storage.sync.set(this.settings, () => {
-      console.log('saved');
     });
   }
 }

@@ -22,8 +22,8 @@ export default class WordsBlacklistPlugin extends BasePlugin {
 
   hidePostsWithBlackListedWords() {
     const words = this.settings.blacklistedWords;
-    const blacklisted = $('.entry.iC>>>.text').contents().filter(function () {
-      const text = $(this).text();
+    const blacklisted = $('.entry.iC>>>.text').contents().filter((index, item) => {
+      const text = $(item).text();
       for (const word of words) {
         if (text.indexOf(word) > -1) {
           return true;

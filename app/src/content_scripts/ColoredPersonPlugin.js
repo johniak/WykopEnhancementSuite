@@ -20,9 +20,9 @@ export default class ColoredPersonPlugin extends BasePlugin {
     const personName = this.personName;
     const colorClass = this.colorClass;
     if (this.settings[this.settingName]) {
-      $('.author.ellipsis a b').each(function () {
-        if ($(this).text() === personName) {
-          $(this).parent().attr('class', colorClass);
+      $('.author.ellipsis a b').each((index, item) => {
+        if ($(item).text() === personName) {
+          $(item).parent().attr('class', colorClass);
         }
       });
       if (window.location.pathname === `/ludzie/${personName}/`) {
@@ -30,12 +30,12 @@ export default class ColoredPersonPlugin extends BasePlugin {
       }
       const pmUrlRegexp = new RegExp('^/wiadomosc-prywatna/');
       if (pmUrlRegexp.test(window.location.pathname)) {
-        $('.usercard>a>span>b').filter(function () {
-          return $(this).text() === personName;
-        }).closest('span').attr('class', colorClass);
-        $('h4>a[class*="color"]').filter(function () {
-          return $(this).text() === personName;
-        }).attr('class', colorClass);
+        $('.usercard>a>span>b').filter((index, item) =>
+          $(item).text() === personName
+        ).closest('span').attr('class', colorClass);
+        $('h4>a[class*="color"]').filter((index, item) =>
+           $(item).text() === personName
+        ).attr('class', colorClass);
       }
     }
   }

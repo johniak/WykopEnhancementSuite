@@ -38,9 +38,9 @@ export default class BlacklistPersonPlugin extends BasePlugin {
   hidePersonActivity() {
     if (this.settings.hiddenUsers) {
       const users = this.users;
-      const blacklisted = $('.author.ellipsis a b').contents().filter(function () {
-        return $.inArray($(this).text(), users) !== -1;
-      });
+      const blacklisted = $('.author.ellipsis a b').contents().filter((index, item) =>
+        $.inArray($(this).text(), users) !== -1
+      );
       $.each(blacklisted, (index, author) => {
         const post = $(author).closest('li');
         post.css('display', 'none');

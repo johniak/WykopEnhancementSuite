@@ -22,6 +22,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.0",
+    "sinon-chrome": "^2.1.2",
     "webpack": "^1.13.2"
   },
   "scripts": {
