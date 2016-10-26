@@ -30,7 +30,7 @@
     "webpack": "^1.13.2"
   },
   "scripts": {
-    "test": "mocha --recursive --compilers js:babel-register app/test",
+    "test": " eslint app/src/** && mocha --recursive --compilers js:babel-register app/test",
     "start": "webpack --watch",
     "build": "webpack"
   },
