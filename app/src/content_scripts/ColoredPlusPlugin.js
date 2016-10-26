@@ -1,22 +1,22 @@
 /**
  * Created by johniak on 10/11/14.
  */
-// / <reference path="../Settings.ts" />
-// / <reference path="../../dts/jquery.d.ts" />
-// / <reference path="../../dts/chrome.d.ts" />
-// / <reference path="../Settings.ts" />
-// / <reference path="BasePlugin.ts" />
-class ColoredPlusPlugin extends BasePlugin {
+import BasePlugin from './BasePlugin';
+import $ from 'jquery';
+
+export default class ColoredPlusPlugin extends BasePlugin {
   constructor(settings) {
     super(settings);
+    console.log("TEEEEST")
     this.runningPoints =
     [
-      RunningPoint.LOADING_STARETED,
+      BasePlugin.RunningPoint.LOADING_STARTED,
     ];
   }
   runAction(runningPoint) {
+    console.log('colored plus',this.settings.coloredPlus);
     if (this.settings.coloredPlus) {
-      $('head').append(`<link rel="stylesheet" href="${this.settings.path}css/colored_nicks.css" type="text/css" />`);
+      require('../../css/colored_nicks.css');
     }
   }
 }

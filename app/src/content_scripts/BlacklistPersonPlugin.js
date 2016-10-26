@@ -1,20 +1,19 @@
 /**
  * Created by johniak on 10/11/14.
  */
-// / <reference path="../Settings.ts" />
-// / <reference path="../../dts/jquery.d.ts" />
-// / <reference path="../../dts/chrome.d.ts" />
-// / <reference path="BasePlugin.ts" />
-class BlacklistPersonPlugin extends BasePlugin {
+import BasePlugin from './BasePlugin';
+import $ from 'jquery';
+
+export default class BlacklistPersonPlugin extends BasePlugin {
   constructor(settings) {
     super(settings);
-    this.runningPoints =
-    [
-      RunningPoint.DOM_CREATED,
-      RunningPoint.DOM_MODIFIED,
+    this.runningPoints = [
+      BasePlugin.RunningPoint.DOM_CREATED,
+      BasePlugin.RunningPoint.DOM_MODIFIED,
     ];
     this.users = [];
   }
+
   initialize() {
     $.get('http://www.wykop.pl/ustawienia/czarne-listy/', (data) => {
       const jqueryData = $(data);
@@ -27,12 +26,14 @@ class BlacklistPersonPlugin extends BasePlugin {
       }
     });
   }
+
   runAction(runningPoint) {
-    if (runningPoint == RunningPoint.DOM_CREATED) {
+    if (runningPoint == BasePlugin.RunningPoint.DOM_CREATED) {
       this.isDomCreated = true;
     }
     this.hidePersonActivity();
   }
+
   hidePersonActivity() {
     if (this.settings.hiddenUsers) {
       const users = this.users;

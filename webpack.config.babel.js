@@ -20,6 +20,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {from: 'manifest.json'},
+      {from: 'img/icon.png',to:'img/icon.png'},
     ]),
   ],
   module: {
@@ -32,6 +33,9 @@ module.exports = {
           presets: ['es2015'],
         },
       },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.png$/, loader: 'url-loader' },
+      { test: /\.jpg$/, loader: 'file-loader' },
     ],
   },
 };

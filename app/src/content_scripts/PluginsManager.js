@@ -1,9 +1,8 @@
 /**
  * Created by johniak on 10/11/14.
  */
+import $ from 'jquery';
 
-import Settings from '../Settings';
-import BasePlugin from './BasePlugin';
 import BlacklistPersonPlugin from './BlacklistPersonPlugin';
 import AdsBlockPlugin from './AdsBlockPlugin';
 import WordsBlacklistPlugin from './WordsBlacklistPlugin';
@@ -11,6 +10,7 @@ import ColoredPersonPlugin from './ColoredPersonPlugin';
 import BannedPersonPlugin from './BannedPersonPlugin';
 import ColoredPlusPlugin from './ColoredPlusPlugin';
 import NsfwPlugin from './NsfwPlugin';
+import BasePlugin from './BasePlugin';
 
 export default class PluginsManager {
   constructor(settings) {
@@ -27,11 +27,10 @@ export default class PluginsManager {
     ];
   }
   initialize() {
-    for (const index in this.plugins) {
-      const plugin = this.plugins[index];
+    for (const plugin of this.plugins) {
       plugin.initialize();
-      if (plugin.hasRunningPoint(RunningPoint.LOADING_STARETED)) {
-        plugin.runAction(RunningPoint.LOADING_STARETED);
+      if (plugin.hasRunningPoint(BasePlugin.RunningPoint.LOADING_STARTED)) {
+        plugin.runAction(BasePlugin.RunningPoint.LOADING_STARTED);
       }
     }
     const interval = window.setInterval(() => {
@@ -44,8 +43,8 @@ export default class PluginsManager {
   onDOMCreated() {
     for (const index in this.plugins) {
       const plugin = this.plugins[index];
-      if (plugin.hasRunningPoint(RunningPoint.DOM_CREATED)) {
-        plugin.runAction(RunningPoint.DOM_CREATED);
+      if (plugin.hasRunningPoint(BasePlugin.RunningPoint.DOM_CREATED)) {
+        plugin.runAction(BasePlugin.RunningPoint.DOM_CREATED);
       }
     }
     $('body').bind('DOMSubtreeModified', () => {
@@ -55,8 +54,8 @@ export default class PluginsManager {
   onDOMModified() {
     for (const index in this.plugins) {
       const plugin = this.plugins[index];
-      if (plugin.hasRunningPoint(RunningPoint.DOM_MODIFIED)) {
-        plugin.runAction(RunningPoint.DOM_MODIFIED);
+      if (plugin.hasRunningPoint(BasePlugin.RunningPoint.DOM_MODIFIED)) {
+        plugin.runAction(BasePlugin.RunningPoint.DOM_MODIFIED);
       }
     }
   }

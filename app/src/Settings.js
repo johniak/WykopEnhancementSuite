@@ -1,7 +1,7 @@
 /**
  * Created by johniak on 10/11/14.
  */
-class Settings {
+export default class Settings {
   constructor() {
     this.hiddenUsers = true;
     this.hideAds = false;

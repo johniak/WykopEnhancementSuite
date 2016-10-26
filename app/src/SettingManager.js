@@ -1,6 +1,6 @@
-// / <reference path="../dts/chrome.d.ts" />
-// / <reference path="Settings.ts" />
-class SettingManager {
+import Settings from './Settings';
+
+export default class SettingManager {
   constructor() {
     this.settings = new Settings();
   }

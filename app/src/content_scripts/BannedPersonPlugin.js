@@ -1,17 +1,17 @@
 /**
  * Created by johniak on 10/11/14.
  */
-// / <reference path="../Settings.ts" />
-// / <reference path="../../dts/jquery.d.ts" />
-// / <reference path="../../dts/chrome.d.ts" />
-// / <reference path="../Settings.ts" />
-// / <reference path="ColoredPersonPlugin.ts" />
-class BannedPersonPlugin extends ColoredPersonPlugin {
+
+import ColoredPersonPlugin from './ColoredPersonPlugin';
+import $ from 'jquery';
+
+export default class BannedPersonPlugin extends ColoredPersonPlugin {
   constructor(settings, personName, settingName, message) {
     super(settings, personName, 'color-4', settingName);
     this.message = message;
     this.banHtml = `<div class="annotation type-light-alert space"><i class="fa fa-info-circle"></i><p>Użytkownik zbanowany permanentnie</p><p>${this.message}</p></div>`;
   }
+
   runAction(runningPoint) {
     super.runAction(runningPoint);
     if (this.settings[this.settingName]) {
