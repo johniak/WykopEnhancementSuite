@@ -11,7 +11,6 @@ export default class SettingManager {
     });
   }
   save() {
-    chrome.storage.sync.set(this.settings, () => {
-    });
+    chrome.storage.sync.set(this.settings);
   }
 }
