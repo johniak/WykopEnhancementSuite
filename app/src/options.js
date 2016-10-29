@@ -2,36 +2,34 @@ import $ from 'jquery';
 import 'select2/dist/js/select2.full';
 import 'select2/dist/css/select2.css';
 import SettingManager from './SettingManager';
-import '../css/widgets.css';
-import '../css/chrome_shared.css';
 
 let settingManager;
+
+function saveBooleanSetting(setting) {
+  const { id, field } = setting;
+  const checkbox = $(`#${id}`);
+  checkbox.change(() => {
+    settingManager.settings[field] = checkbox.is(':checked');
+    settingManager.save();
+  });
+}
+
+const settings = [
+  { id: 'hide-users', field: 'hiddenUsers' },
+  { id: 'hide-ads', field: 'hideAds' },
+  { id: 'colored-plus', field: 'coloredPlus' },
+  { id: 'ban-calka', field: 'permDlaCalki' },
+  { id: 'green-raja', field: 'greenRaja' },
+  { id: 'bordo-kicioch', field: 'bordoKicioch' },
+  { id: 'nsfwSwitch', field: 'nsfwSwitch' },
+  { id: 'expandableComments', field: 'expandableComments' },
+];
+
 window.onload = () => {
   settingManager = new SettingManager();
-  $('#hide-users').change(() => {
-    settingManager.settings.hiddenUsers = $('#hide-users').is(':checked');
-    settingManager.save();
-  });
-  $('#hide-ads').change(() => {
-    settingManager.settings.hideAds = $('#hide-ads').is(':checked');
-    settingManager.save();
-  });
-  $('#colored-plus').change(() => {
-    settingManager.settings.coloredPlus = $('#colored-plus').is(':checked');
-    settingManager.save();
-  });
-  $('#ban-calka').change(() => {
-    settingManager.settings.permDlaCalki = $('#ban-calka').is(':checked');
-    settingManager.save();
-  });
-  $('#green-raja').change(() => {
-    settingManager.settings.greenRaja = $('#green-raja').is(':checked');
-    settingManager.save();
-  });
-  $('#bordo-kicioch').change(() => {
-    settingManager.settings.bordoKicioch = $('#bordo-kicioch').is(':checked');
-    settingManager.save();
-  });
+  for (const setting of settings) {
+    saveBooleanSetting(setting);
+  }
   $('#blacklist-words').change(() => {
     if ($('#blacklist-words').val().length === 0) {
       settingManager.settings.blacklistedWords = [];
@@ -43,7 +41,9 @@ window.onload = () => {
     settingManager.save();
   });
   settingManager.read(() => {
-    $('#hide-users').attr('checked', settingManager.settings.hiddenUsers);
+    for (const setting of settings) {
+      $(`#${setting.id}`).attr('checked', settingManager.settings[setting.field]);
+    }
     $('#hide-ads').attr('checked', settingManager.settings.hideAds);
     $('#colored-plus').attr('checked', settingManager.settings.coloredPlus);
     $('#ban-calka').attr('checked', settingManager.settings.permDlaCalki);

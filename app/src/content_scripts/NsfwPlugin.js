@@ -16,6 +16,9 @@ export default class NsfwPlugin extends BasePlugin {
   }
 
   runAction(runningPoint) {
+    if (!this.settings.nsfwSwitch) {
+      return;
+    }
     require('../../css/switch.css');
     const settings = this.settings;
     if (runningPoint === BasePlugin.RunningPoint.DOM_CREATED) {

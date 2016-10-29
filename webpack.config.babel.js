@@ -17,6 +17,7 @@ module.exports = {
       chunks: ['options'],
       template: 'options.ejs',
       filename: 'options.html',
+      inject: 'body',
     }),
     new CopyWebpackPlugin([
       {from: 'manifest.json'},

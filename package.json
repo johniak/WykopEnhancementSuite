@@ -46,6 +46,8 @@
   "homepage": "https://github.com/johniak/WykopEnhancementSuite#readme",
   "dependencies": {
     "jquery": "^3.1.1",
+    "jquery-lazyload": "^1.9.7",
+    "jquery.lazyload.cjs": "^1.9.8-beta.1",
     "select2": "^4.0.3"
   }
 }

@@ -11,6 +11,7 @@ import BannedPersonPlugin from './BannedPersonPlugin';
 import ColoredPlusPlugin from './ColoredPlusPlugin';
 import NsfwPlugin from './NsfwPlugin';
 import BasePlugin from './BasePlugin';
+import ExpandableCommentPlugin from './ExpandableCommentPlugin';
 
 export default class PluginsManager {
   constructor(settings) {
@@ -24,6 +25,7 @@ export default class PluginsManager {
       new ColoredPersonPlugin(settings, 'Raja', 'color-0', 'greenRaja'),
       new ColoredPersonPlugin(settings, 'kicioch', 'color-2', 'bordoKicioch'),
       new BannedPersonPlugin(settings, 'FilozofujacaCalka', 'permDlaCalki', 'za zbrodnię na Wołyniu'),
+      new ExpandableCommentPlugin(settings),
     ];
   }
   initialize() {

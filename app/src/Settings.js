@@ -10,6 +10,8 @@ export default class Settings {
     this.permDlaCalki = false;
     this.bordoKicioch = false;
     this.blacklistedWords = [];
+    this.nsfwSwitch = true;
     this.isNsfwDisabled = false;
+    this.expandableComments = true;
   }
 }

@@ -14,5 +14,6 @@ module.exports = {
     "chrome": false,
     "$": false,
     "window": false,
+    "browser":false,
   }
 };
