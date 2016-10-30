@@ -32,50 +32,31 @@ export default class NsfwPlugin extends BasePlugin {
       onOffSwitch.change(() => {
         settings.isNsfwDisabled = onOffSwitch.prop('checked');
         chrome.runtime.sendMessage({ method: 'saveSettings', data: settings });
-        if (this.settings.isNsfwDisabled) {
-          this.hideNsfwPosts();
-        } else {
-          this.unHideNsfwPosts();
-        }
+        this.setNsfwVisibilty(!this.settings.isNsfwDisabled);
       });
       if (this.settings.isNsfwDisabled) {
         onOffSwitch.prop('checked', true);
       }
     }
-    if (this.settings.isNsfwDisabled) {
-      this.hideNsfwPosts();
-    } else {
-      this.unHideNsfwPosts();
-    }
+    this.setNsfwVisibilty(!this.settings.isNsfwDisabled);
   }
 
-  unHideNsfwPosts() {
+  setNsfwVisibilty(visibility) {
     const blacklisted = $('.entry.iC>>>.text').contents().filter((index, item) => {
       const text = $(item).text();
       return text.toLowerCase().indexOf('#nsfw') > -1;
     });
     $.each(blacklisted, (index, post) => {
-      $(post)
+      const content = $(post)
         .parent()
         .parent()
         .parent()
-        .parent()
-        .css('display', 'block');
-    });
-  }
-
-  hideNsfwPosts() {
-    const blacklisted = $('.entry.iC>>>.text').contents().filter((index, item) => {
-      const text = $(item).text();
-      return text.toLowerCase().indexOf('#nsfw') > -1;
-    });
-    $.each(blacklisted, (index, post) => {
-      $(post)
-        .parent()
-        .parent()
-        .parent()
-        .parent()
-        .css('display', 'none');
+        .parent();
+      if (visibility) {
+        content.css('display', 'block');
+      } else {
+        content.css('display', 'none');
+      }
     });
   }
 }
