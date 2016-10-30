@@ -24,10 +24,14 @@ export default class PluginsManager {
       new NsfwPlugin(settings),
       new ColoredPersonPlugin(settings, 'Raja', 'color-0', 'greenRaja'),
       new ColoredPersonPlugin(settings, 'kicioch', 'color-2', 'bordoKicioch'),
-      new BannedPersonPlugin(settings, 'FilozofujacaCalka', 'permDlaCalki', 'za zbrodnię na Wołyniu'),
+      new BannedPersonPlugin(settings,
+        'FilozofujacaCalka',
+        'permDlaCalki',
+        'za zbrodnię na Wołyniu'),
       new ExpandableCommentPlugin(settings),
     ];
   }
+
   initialize() {
     for (const plugin of this.plugins) {
       plugin.initialize();
@@ -36,26 +40,28 @@ export default class PluginsManager {
       }
     }
     const interval = window.setInterval(() => {
-      if ($('body').html() != null) {
+      if ($('body').html()) {
         window.clearInterval(interval);
         this.onDOMCreated();
       }
     }, 5);
   }
+
   onDOMCreated() {
-    for (const plugin of this.plugins) {
-      if (plugin.hasRunningPoint(BasePlugin.RunningPoint.DOM_CREATED)) {
-        plugin.runAction(BasePlugin.RunningPoint.DOM_CREATED);
-      }
-    }
+    this.initPlugins(BasePlugin.RunningPoint.DOM_CREATED);
     $('body').bind('DOMSubtreeModified', () => {
       this.onDOMModified();
     });
   }
+
   onDOMModified() {
+    this.initPlugins(BasePlugin.RunningPoint.DOM_MODIFIED);
+  }
+
+  initPlugins(runningPoint) {
     for (const plugin of this.plugins) {
-      if (plugin.hasRunningPoint(BasePlugin.RunningPoint.DOM_MODIFIED)) {
-        plugin.runAction(BasePlugin.RunningPoint.DOM_MODIFIED);
+      if (plugin.hasRunningPoint(runningPoint)) {
+        plugin.runAction(runningPoint);
       }
     }
   }
