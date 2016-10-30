@@ -6,9 +6,9 @@ module.exports = {
     "import"
   ],
   rules: {
-    "no-unused-vars": ["error", {"argsIgnorePattern": ".*"}],
-    "class-methods-use-this": "off",
-    "global-require": "off"
+    "no-unused-vars": [2, {"argsIgnorePattern": ".*"}],
+    "class-methods-use-this": 0,
+    "global-require": 0
   },
   "globals": {
     "chrome": false,
