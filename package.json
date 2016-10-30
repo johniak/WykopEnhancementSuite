@@ -1,6 +1,6 @@
 {
   "name": "wykop-enhancement-suite",
-  "version": "0.5.0",
+  "version": "0.5.2",
   "description": "Wykop Enhancement Suite",
   "main": "index.js",
   "devDependencies": {
