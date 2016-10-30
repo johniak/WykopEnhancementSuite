@@ -2,15 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Options -  Wykop Enhancement Suite</title>
-    <link rel="stylesheet" type="text/css" href="css/chrome_shared.css">
-    <link rel="stylesheet" type="text/css" href="css/widgets.css">
-    <link rel="stylesheet" href="css/select2.css"/>
-    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-    <script src="js/select2.min.js"></script>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="css/chrome_shared.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/widgets.css">-->
+    <!--<link rel="stylesheet" href="css/select2.css"/>-->
+    <!--<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>-->
+    <!--<script src="js/select2.min.js"></script>-->
     <style>
         body > .main-container {
             max-width: 800px;
-            margin: 50px auto
+            margin: 50px 50px;
         }
 
         header {
@@ -26,9 +27,6 @@
         Wykop Enhancement Suite - Options
     </h1>
     <hr>
-    <script type="text/javascript" src="ts/SettingManager.js"></script>
-    <script type="text/javascript" src="ts/Settings.js"></script>
-    <script type="text/javascript" src="ts/options.js"></script>
     <p>
         <label>
             <input type="checkbox" id="hide-users">
@@ -47,10 +45,24 @@
             <span style="color: #BB0000">Pokoloruj</span> <span style="color: #339933">nicki</span> <span style="color: #ff5917">osób</span> <span>plusujących</span>
         </label>
     </p>
+    <p>
+        <label>
+            <input type="checkbox" id="nsfwSwitch">
+            Pokaż przełącznik NSFW
+        </label>
+    </p>
+    <p>
+        <label>
+            <input type="checkbox" id="expandableComments">
+            Ukrywanie/rozwijanie komentarzy z odpowiedziami
+        </label>
+    </p>
     <p><h3>Czarna lista fraz</h3></p>
     <small>(rozdzielone przecinkami)</small>
    <p> <span>Jeżeli post zawiera wybrane frazy, nie zostanie wyświetlony</span></p>
-    <input type="hidden" id="blacklist-words" style="width: 100%;">
+    <select id="blacklist-words" multiple="multiple" style="width: 100%;">
+    </select>
+    <!--<input type="hidden" id="blacklist-words" >-->
     <h2>
         Heheszki
     </h2>
