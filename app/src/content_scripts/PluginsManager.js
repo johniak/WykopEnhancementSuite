@@ -12,6 +12,7 @@ import ColoredPlusPlugin from './ColoredPlusPlugin';
 import NsfwPlugin from './NsfwPlugin';
 import BasePlugin from './BasePlugin';
 import ExpandableCommentPlugin from './ExpandableCommentPlugin';
+import FixedTagsPlugin from './FixedTagsPlugin';
 
 export default class PluginsManager {
   constructor(settings) {
@@ -29,6 +30,7 @@ export default class PluginsManager {
         'permDlaCalki',
         'za zbrodnię na Wołyniu'),
       new ExpandableCommentPlugin(settings),
+      new FixedTagsPlugin(settings),
     ];
   }
 

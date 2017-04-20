@@ -23,6 +23,7 @@ const settings = [
   { id: 'bordo-kicioch', field: 'bordoKicioch' },
   { id: 'nsfwSwitch', field: 'nsfwSwitch' },
   { id: 'expandableComments', field: 'expandableComments' },
+  { id: 'fixedTags', field: 'fixedTags' },
 ];
 
 window.onload = () => {
