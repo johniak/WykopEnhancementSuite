@@ -13,5 +13,7 @@ export default class Settings {
     this.nsfwSwitch = true;
     this.isNsfwDisabled = false;
     this.expandableComments = true;
+    this.fixedTags = true;
+    this.fixedTagsMonthCount = 60;
   }
 }

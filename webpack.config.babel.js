@@ -4,7 +4,7 @@ import CopyWebpackPlugin from  'copy-webpack-plugin';
 module.exports = {
   context: `${__dirname}/app`,
   entry: {
-    content_script: './src/content_scripts/main.js',
+    content_script: ['babel-polyfill', './src/content_scripts/main.js'],
     background: './src/background.js',
     options: './src/options.js',
   },
